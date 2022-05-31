@@ -126,7 +126,7 @@ server.listen(8001, function () {
   console.log("Listening to port 8001.");
 });
 
-app.use(express.static("public"));
+app.use("/", express.static("public"));
 // app.use(app.router);
 // app.get("/", function(req, res){
 //   res.sendFile(__dirname + "/public/");
