@@ -23,7 +23,8 @@ app.use(express.static("public"));
 
 // Global variables to hold all usernames and rooms created
 var usernames = {};
-//var rooms = []; // 방 배열 선언
+// 방 배열 선언
+//var rooms = [];
 var rooms =[{ name: "global", creator: "관리자" },
             { name: "chess", creator: "관리자" }]
 // { name: "global", creator: "Anonymous" },
