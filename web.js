@@ -45,8 +45,8 @@ io.on("connection", function (socket) {
   socket.on("createUser", function (username) {
     socket.username = username;
     usernames[username] = username;
-    // socket.currentRoom = "global";
-    // socket.join("global");
+    socket.currentRoom = "global";
+    socket.join("global");
 
     console.log(`User ${username} created on server successfully.`);
 

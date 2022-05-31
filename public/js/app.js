@@ -8,7 +8,7 @@ var roomInput = document.getElementById("roomInput");
 var createRoomBtn = document.getElementById("room_add_icon_holder");
 var chatDisplay = document.getElementById("chat");
 
-var currentRoom = "";
+var currentRoom = "global";
 var myUsername = "";
 
 // Prompt for username on connecting to server
