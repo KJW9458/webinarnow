@@ -35,14 +35,14 @@ message.addEventListener("keyup", function (event) {
 });
 
 // Create new room on button click
-createRoomBtn.addEventListener("click", function () {
-  // socket.emit("createRoom", prompt("Enter new room: "));
-  let roomName = roomInput.value.trim();
-  if (roomName !== "") {
-    socket.emit("createRoom", roomName);
-    roomInput.value = "";
-  }
-});
+// createRoomBtn.addEventListener("click", function () {
+//   socket.emit("createRoom", prompt("Enter new room: "));
+//   let roomName = roomInput.value.trim();
+//   if (roomName !== "") {
+//     socket.emit("createRoom", roomName);
+//     roomInput.value = "";
+//   }
+// });
 
 socket.on("updateChat", function (username, data) {
   if (username === "INFO") {
