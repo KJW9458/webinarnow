@@ -86,10 +86,17 @@ socket.on("updateUsers", function (usernames) {
   userlist.innerHTML = "";
   console.log("usernames returned from server", usernames);
   for (var user in usernames) {
-    userlist.innerHTML += `<div class="user_card">
-                              <div class="pic"></div>
-                              <span>${user}</span>
-                            </div>`;
+    if(user.toLowerCase()==="admin"){
+      userlist.innerHTML += `<div class="chat_list_con admin_list_con">${user}</div>`;
+    } else if(user===myUsername){
+      userlist.innerHTML += `<div class="chat_list_con me_list_con">${user}</div>`;
+    } else {
+      userlist.innerHTML += `<div class="chat_list_con member_list_con">${user}</div>`;
+    }
+    // userlist.innerHTML += `<div class="user_card">
+    //                           <div class="pic"></div>
+    //                           <span>${user}</span>
+    //                         </div>`;
   }
 });
 
