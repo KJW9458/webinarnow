@@ -47,13 +47,6 @@ io.on("connection", function (socket) {
     usernames[username] = username;
     socket.currentRoom = "global";
     socket.join("global");
-    socket.broadcast
-      .to(room)
-      .emit(
-        "updateChat",
-        "INFO",
-        socket.username + " 님께서 접속하셨습니다"
-      );
 
     console.log(`User ${username} created on server successfully.`);
 
