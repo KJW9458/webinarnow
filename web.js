@@ -129,5 +129,5 @@ server.listen(8001, function () {
 app.use("/", express.static("public"));
 // app.use(app.router);
 app.get("/", function(req, res){
-  res.sendFile(__dirname + "/");
+  res.sendFile(__dirname + "/public/");
 });
