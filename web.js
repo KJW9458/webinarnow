@@ -4,11 +4,11 @@ const { Server } = require("socket.io");
 const mysql = require("mysql");
 
 var connection = mysql.createConnection({
-  host  : '127.0.0.1',
-  user  : 'root',
+  host  : 'chatroom.cafe24app.com',
+  user  : 'studioyamyam2',
   password : 'assa2589!@',
   port  : 3306,
-  database : 'chat'
+  database : 'studioyamyam2'
 });
 
 // connection.connect();
@@ -129,6 +129,8 @@ server.listen(8001, function () {
 app.use("/", express.static("public"));
 app.use("/css", express.static(__dirname + "/public/css/"));
 app.use("/js", express.static(__dirname + "/public/js/"));
+app.use("/font", express.static(__dirname + "/public/font/"));
+app.use("/img", express.static(__dirname + "/public/img/"));
 // app.use(app.router);
 app.get("/", function(req, res){
   res.sendFile(__dirname + "/public/");
