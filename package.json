@@ -2,10 +2,10 @@
   "name": "multi-room-chat-app",
   "version": "1.0.0",
   "description": "Multi-room Chat Web Application built with NodeJS and socket.io",
-  "main": "server.js",
+  "main": "web.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node web.js"
   },
   "keywords": [
     "chat-app",
