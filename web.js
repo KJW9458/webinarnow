@@ -19,8 +19,6 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.use(express.static("public"));
-
 // Global variables to hold all usernames and rooms created
 var usernames = {};
 // 방 배열 선언
@@ -126,4 +124,10 @@ io.on("connection", function (socket) {
 
 server.listen(8001, function () {
   console.log("Listening to port 8001.");
+});
+
+app.use(express.static("public"));
+app.use(app.router);
+app.get("/", function(req, res){
+  res.sendFile(__dirname + "/public/index.html");
 });
