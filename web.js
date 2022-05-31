@@ -21,6 +21,11 @@ const io = new Server(server);
 
 app.use(express.static("public"));
 
+app.get('/*', function(req, res) {
+  res.writeHead(200, {'Content-Type':'text/plain; charset=utf-8'});
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+ })
+
 // Global variables to hold all usernames and rooms created
 var usernames = {};
 //var rooms = []; // 방 배열 선언
