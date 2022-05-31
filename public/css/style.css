@@ -322,6 +322,7 @@ button.enter_chat_btn {
   position: relative;
   /* flex: 1; */
   align-items: center;
+  width: 100%;
   margin: 10px;
 }
 
