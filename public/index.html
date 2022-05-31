@@ -127,7 +127,7 @@
                   <div class="chat_bg">
                     <div class="chat_talk_head">실시간 채팅창</div>
                     <div id="chat" class="chat">
-                      <div class="chat_talk_con me_talk_box">
+                      <!-- <div class="chat_talk_con me_talk_box">
                         <div class="chat_name">ME</div>
                         <div class="talk_con">
                             <div class="talk_txt">EV 배터리 이슈 및 전고체배터리 현황과 미래전망 세미나</div>
@@ -146,12 +146,12 @@
                         <div class="talk_con">
                             <div class="talk_txt">EV 배터리 이슈 및 전고체배터리 현황과 미래전망 세미나</div>
                             <div class="talk_time">14:52</div>
-                        </div>
+                        </div> -->
                       </div>
                     </div><!--chat-->
         
                     <div class="chat_input">
-                      <input type="hidden" id="room_name" value="">
+                      <input type="hidden" id="room_name" value="global">
                       <input type="text" id="messageInput" placeholder="메세지 입력" />
                       <button id="send_message_btn" class="send_message_btn" id="send">
                         보내기
@@ -172,6 +172,7 @@
                   </div>
                 </div>
                 <!--접속자 리스트-->
+                <div id="active_rooms_list" class="active_rooms_list" style="display:none"></div>
               </div>
             </div>
           </div>

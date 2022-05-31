@@ -13,7 +13,7 @@ var myUsername = "";
 
 // Prompt for username on connecting to server
 socket.on("connect", function () {
-  myUsername = prompt("Enter name: ");
+  myUsername = prompt("사용자 명을 입력하세요.");
   socket.emit("createUser", myUsername);
 });
 
@@ -45,33 +45,37 @@ message.addEventListener("keyup", function (event) {
 // });
 
 socket.on("updateChat", function (username, data) {
+  var today = new Date();
+
+  let year = today.getFullYear(); // 년도
+  let month = today.getMonth() + 1;  // 월
+  let date = today.getDate();  // 날짜
+
+  let hours = today.getHours(); // 시
+  let minutes = today.getMinutes();  // 분
+  let seconds = today.getSeconds();  // 초
+
+  var time = hours + ":" + minutes;
   if (username === "INFO") {
     console.log("Displaying announcement");
     chatDisplay.innerHTML += `<div class="announcement"><span>${data}</span></div>`;
   } else if(username.toLowerCase()==="admin") {
     console.log("Displaying user message");
-    chatDisplay.innerHTML += `<div class="message_holder admin">
-                                <div class="pic"></div>
-                                <div class="message_box">
-                                  <div id="message" class="message">
-                                    <span class="message_name">${username}</span>
-                                    <span class="message_text">${data}</span>
-                                  </div>
-                                </div>
-                              </div>`;
+    chatDisplay.innerHTML += `<div class="chat_talk_con admin_talk_box">
+    <div class="chat_name">${username}</div>
+    <div class="talk_con">
+        <div class="talk_txt">${data}</div>
+        <div class="talk_time">${time}</div>
+    </div>
+  </div>`;
   } else {
     console.log("Displaying user message");
-    chatDisplay.innerHTML += `<div class="message_holder ${
-      username === myUsername ? "me" : ""
-    }">
-                                <div class="pic"></div>
-                                <div class="message_box">
-                                  <div id="message" class="message">
-                                    <span class="message_name">${username}</span>
-                                    <span class="message_text">${data}</span>
-                                  </div>
-                                </div>
-                              </div>`;
+    chatDisplay.innerHTML += `<div class="chat_talk_con ${username === myUsername ? "me" : ""}_talk_box">
+    <div class="chat_name">${username}</div>
+    <div class="talk_con">
+        <div class="talk_txt">${data}</div>
+        <div class="talk_time">${time}</div>
+    </div>`;
 
   }
 
