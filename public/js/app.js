@@ -55,6 +55,13 @@ socket.on("updateChat", function (username, data) {
   let minutes = today.getMinutes();  // 분
   let seconds = today.getSeconds();  // 초
 
+  if(hours<10){
+    hours = "0" + hours;
+  }
+
+  if(minutes<10){
+    minutes = "0" + minutes;
+  }
   var time = hours + ":" + minutes;
   if (username === "INFO") {
     console.log("Displaying announcement");
@@ -130,4 +137,60 @@ function changeRoom(room) {
     document.getElementById(currentRoom).classList.add("active_item");
   }
   document.getElementById("room_name").value = room;
+}
+
+function includeHeader() {
+  var z, i, elmnt, file, xhttp;
+  /*loop through a collection of all HTML elements:*/
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("webinarnow-include-header");
+    if (file) {
+      /*make an HTTP request using the attribute value as the file name:*/
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /*remove the attribute, and call this function once more:*/
+          elmnt.removeAttribute("webinarnow-include-header");
+          includeHeader();
+        }
+      }      
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /*exit the function:*/
+      return;
+    }
+  }
+}
+
+function includeFooter() {
+  var z, i, elmnt, file, xhttp;
+  /*loop through a collection of all HTML elements:*/
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("webinarnow-include-footer");
+    if (file) {
+      /*make an HTTP request using the attribute value as the file name:*/
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /*remove the attribute, and call this function once more:*/
+          elmnt.removeAttribute("webinarnow-include-footer");
+          includeFooter();
+        }
+      }      
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /*exit the function:*/
+      return;
+    }
+  }
 }

@@ -1,21 +1,37 @@
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
+// const phpExpress = require('php-express')({
+//   binPath: 'php'
+// });
+
 const mysql = require("mysql");
 
-var connection = mysql.createConnection({
-  host  : 'chatroom.cafe24app.com',
-  user  : 'studioyamyam2',
-  password : 'assa2589!@',
+// var connection = mysql.createConnection({
+//   host  : 'chatroom.cafe24app.com',
+//   user  : 'studioyamyam2',
+//   password : 'assa2589!@',
+//   port  : 3306,
+//   database : 'studioyamyam2'
+// });
+var conn = mysql.createConnection({
+  host  : 'localhost',
+  user  : 'root',
+  password : 'assa2580',
   port  : 3306,
-  database : 'studioyamyam2'
+  database : 'chat'
 });
 
-// connection.connect();
+// conn.connect();
 
-// connection.end();
+// conn.end();
 
 const app = express();
+
+// app.engine('php', phpExpress.engine);
+
+// app.all(/.+php$/, phpExpress.router);
+
 const server = http.createServer(app);
 const io = new Server(server);
 
