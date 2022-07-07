@@ -1,9 +1,6 @@
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
-// const phpExpress = require('php-express')({
-//   binPath: 'php'
-// });
 
 const mysql = require("mysql");
 
@@ -17,20 +14,12 @@ const mysql = require("mysql");
 var conn = mysql.createConnection({
   host  : 'localhost',
   user  : 'root',
-  password : 'assa2580',
+  password : 'assa2589!@',
   port  : 3306,
   database : 'chat'
 });
 
-// conn.connect();
-
-// conn.end();
-
 const app = express();
-
-// app.engine('php', phpExpress.engine);
-
-// app.all(/.+php$/, phpExpress.router);
 
 const server = http.createServer(app);
 const io = new Server(server);
@@ -89,11 +78,12 @@ io.on("connection", function (socket) {
     var time = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
 
     io.sockets.to(socket.currentRoom).emit("updateChat", socket.username, data.msg);
-    // connection.query("INSERT INTO chat(id, room, message, datetime) VALUES (?,?,?,?)", [
-    //   socket.username, data.room, data.msg, time
-    // ]);
+    // 채팅 내역 DB 입력
+    conn.query("INSERT INTO chat(id, room, message, datetime) VALUES (?,?,?,?)", [
+      socket.username, data.room, data.msg, time
+    ]);
 
-    // connection.end();
+    // conn.end();
   });
 
   // 방만들기
