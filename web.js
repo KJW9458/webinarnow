@@ -11,13 +11,13 @@ const mysql = require("mysql");
 //   port  : 3306,
 //   database : 'studioyamyam2'
 // });
-var conn = mysql.createConnection({
-  host  : 'localhost',
-  user  : 'root',
-  password : 'assa2589!@',
-  port  : 3306,
-  database : 'chat'
-});
+// var conn = mysql.createConnection({
+//   host  : 'localhost',
+//   user  : 'root',
+//   password : 'assa2589!@',
+//   port  : 3306,
+//   database : 'chat'
+// });
 
 const app = express();
 
@@ -28,8 +28,10 @@ const io = new Server(server);
 var usernames = {};
 // 방 배열 선언
 //var rooms = [];
-var rooms =[{ name: "global", creator: "관리자" },
-            { name: "chess", creator: "관리자" }]
+var rooms = [
+  { name: "global", creator: "관리자" },
+  { name: "chess", creator: "관리자" },
+];
 // { name: "global", creator: "Anonymous" },
 // { name: "chess", creator: "Anonymous" },
 
@@ -68,20 +70,34 @@ io.on("connection", function (socket) {
     var today = new Date();
 
     let year = today.getFullYear(); // 년도
-    let month = today.getMonth() + 1;  // 월
-    let date = today.getDate();  // 날짜
+    let month = today.getMonth() + 1; // 월
+    let date = today.getDate(); // 날짜
 
     let hours = today.getHours(); // 시
-    let minutes = today.getMinutes();  // 분
-    let seconds = today.getSeconds();  // 초
+    let minutes = today.getMinutes(); // 분
+    let seconds = today.getSeconds(); // 초
 
-    var time = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
+    var time =
+      year +
+      "-" +
+      month +
+      "-" +
+      date +
+      " " +
+      hours +
+      ":" +
+      minutes +
+      ":" +
+      seconds;
 
-    io.sockets.to(socket.currentRoom).emit("updateChat", socket.username, data.msg);
+    io.sockets
+      .to(socket.currentRoom)
+      .emit("updateChat", socket.username, data.msg);
     // 채팅 내역 DB 입력
-    conn.query("INSERT INTO chat(id, room, message, datetime) VALUES (?,?,?,?)", [
-      socket.username, data.room, data.msg, time
-    ]);
+    // conn.query(
+    //   "INSERT INTO chat(id, room, message, datetime) VALUES (?,?,?,?)",
+    //   [socket.username, data.room, data.msg, time]
+    // );
 
     // conn.end();
   });
@@ -98,18 +114,22 @@ io.on("connection", function (socket) {
   socket.on("joinRooms", function (room) {
     socket.broadcast
       .to(socket.currentRoom)
-      .emit("updateChat", "INFO", socket.username + " 님께서 방을 나가셨습니다.");
+      .emit(
+        "updateChat",
+        "INFO",
+        socket.username + " 님께서 방을 퇴장하셨습니다."
+      );
     socket.leave(socket.currentRoom);
     socket.currentRoom = room;
     socket.join(room);
-    socket.emit("updateChat", "INFO", "" + room + " 방에 접속하였습니다.");
+    socket.emit("updateChat", "INFO", "" + room + " 방에 입장하였습니다.");
     // 누군가 방 입장 시 전체 메세지 출력
     socket.broadcast
       .to(room)
       .emit(
         "updateChat",
         "INFO",
-        socket.username + " 님께서 " + room + " 방에 접속하셨습니다"
+        socket.username + " 님께서 " + room + " 방에 입장하셨습니다"
       );
   });
   // 채팅 서버 나갈 때
@@ -120,7 +140,7 @@ io.on("connection", function (socket) {
     socket.broadcast.emit(
       "updateChat",
       "INFO",
-      socket.username + "님께서 접속을 종료하셨습니다."
+      socket.username + "님께서 퇴장하셨습니다."
     );
   });
 });
@@ -128,8 +148,8 @@ io.on("connection", function (socket) {
 // var count = io.of("/socket").in("global").fetchSockets();
 // console.log(count.length);
 
-server.listen(8001, function () {
-  console.log("Listening to port 8001.");
+server.listen(8002, function () {
+  console.log("Listening to port 8002.");
 });
 
 app.use("/", express.static("public"));
@@ -137,7 +157,8 @@ app.use("/css", express.static(__dirname + "/public/css/"));
 app.use("/js", express.static(__dirname + "/public/js/"));
 app.use("/font", express.static(__dirname + "/public/font/"));
 app.use("/img", express.static(__dirname + "/public/img/"));
+app.use("/sub", express.static(__dirname + "/public/sub/"));
 // app.use(app.router);
-app.get("/", function(req, res){
+app.get("/", function (req, res) {
   res.sendFile(__dirname + "/public/");
 });

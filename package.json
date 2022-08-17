@@ -1,5 +1,5 @@
 {
-  "name": "multi-room-chat-app",
+  "name": "webinarnow",
   "version": "1.0.0",
   "description": "Multi-room Chat Web Application built with NodeJS and socket.io",
   "main": "web.js",
@@ -9,7 +9,7 @@
   },
   "keywords": [
     "chat-app",
-    "multi-room-chat-app",
+    "webinarnow",
     "multi-user-chat-app",
     "nodejs",
     "websockets",
