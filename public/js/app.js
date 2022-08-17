@@ -8,12 +8,32 @@ var roomInput = document.getElementById("roomInput");
 var createRoomBtn = document.getElementById("room_add_icon_holder");
 var chatDisplay = document.getElementById("chat");
 
-var currentRoom = "global";
+function getParameterByName(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(location.search);
+  return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+var currentRoom = "";
 var myUsername = "";
+
+if(getParameterByName('room')!=""){
+  currentRoom = getParameterByName('room');
+}
+
+if(getParameterByName('user')!=""){
+  myUsername = getParameterByName('user');
+}
+
+console.log(currentRoom);
+console.log(myUsername);
 
 // Prompt for username on connecting to server
 socket.on("connect", function () {
-  myUsername = prompt("사용자 명을 입력하세요.");
+  if(myUsername==""){
+    myUsername = prompt("사용자 명을 입력하세요.");
+  }
   socket.emit("createUser", myUsername);
 });
 
@@ -91,7 +111,7 @@ socket.on("updateChat", function (username, data) {
 
 socket.on("updateUsers", function (usernames) {
   userlist.innerHTML = "";
-  console.log("usernames returned from server", usernames);
+  // console.log("usernames returned from server", usernames);
   for (var user in usernames) {
     if(user.toLowerCase()==="admin"){
       userlist.innerHTML += `<div class="chat_list_con admin_list_con">${user}</div>`;
