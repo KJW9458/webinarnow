@@ -1,24 +1,93 @@
+<style>
+    /* Reset(임시 적용 - 사용하시는 reset css로 대체하시면 됩니다) */
+    * {margin:0; padding:0}
+    body, a {color:#222}
+    a {text-decoration:none}
+    a:hover {text-decoration:underline}
+
+    /* 닷컴 PC 공통푸터 CSS */		
+    .footer-wrap {font-size:14px}
+    .foot-cont {padding:25px 0 60px; border-top:1px solid #c8c8c8}
+    .foot-cont address {font-style:normal}
+    .foot-cont .f-item-group + .f-item-group {margin-top:35px}
+    .foot-cont .f-item-group dt {margin-bottom:5px; font-weight:bold}
+    .foot-cont .f-item > a:before,
+    .foot-cont .f-item > span:before {content:'|'; margin:0 15px 0 11px}
+    .foot-cont .hk .f-item > a:first-child:before,
+    .foot-cont .hk .f-item > span:first-child:before,
+    .foot-cont .hk-dotcom .f-item > a:first-child:before,
+    .foot-cont .hk-dotcom .f-item > span:first-child:before {display:none}
+    .foot-cont .f-item + .f-item {margin-top:7px}
+    .foot-cont .hk-family:after {content:''; display:block; clear:both}
+    .foot-cont .hk-family dt,
+    .foot-cont .hk-family dd {float:left}
+    .foot-cont .copyright {margin-bottom:5px; font-weight:bold; letter-spacing:0}
+</style>
 <footer>
-    <div class="inner">
-        <div class="f_con">
-            <div class="f_logo"><img src="/img/logo.png" alt="웨비나우 로고"></div>
-            <ul class="f_btn">
-                <li><a href="#">회사소개</a></li>
-                <li><a href="#">이용약관</a></li>
-                <li><a href="#">개인정보처리방침</a></li>
-                <li><a href="#">이용안내</a></li>
-            </ul>
-        </div>
-        <ul class="f_company">
-            <li>(주)웨비나우</li>
-            <li>대표자 대표자</li>
-            <li>사업자등록번호 000-00-00000</li>
-        </ul>
-        <div class="f_info">
-            <p class="address">부산광역시 금정구 반송로 357 2층</p>
-            <p class="fax">대표전화) 051-123-4567</p>
-            <p class="number">팩스) 051-123-4567</p>
-        </div>
-        <p class="copy">COPYRIGHT© WEBINARNOW ALL RIGHTS RESERVED.</p>
+    <div class="inner" class="footer-wrap">
+        <div class="foot-inner foot-cont">
+			<div class="f-item-group">
+				<dl class="hk">
+					<dt>한국경제신문</dt>
+					<dd>
+						<div class="f-item">
+							<a href="http://company.hankyung.com/etc/ked/" target="_blank">회사소개</a>
+							<a href="http://plus.hankyung.com/apps/service.payment" target="_blank">모바일한경 구독신청</a> 
+							<a href="https://members.hankyung.com/#mainTab" target="_blank">구독신청</a>
+							<a href="http://company.hankyung.com/etc/ked/standard/ombudsman.html" target="_blank">고충처리</a>
+							<a href="http://company.hankyung.com/etc/ked/standard/ad.html" target="_blank">광고안내</a>
+							<span>대표번호 : <span class="txt-num">02-3604-114</span></span>
+						</div>
+					</dd>
+				</dl>
+			</div>
+			<div class="f-item-group">
+				<dl class="hk-dotcom">
+					<dt>한경닷컴</dt>
+					<dd>
+						<div class="f-item">
+							<a href="http://company.hankyung.com/introduce/" target="_blank">회사소개</a>
+							<span><a href="http://company.hankyung.com/introduce/partnership/business/" target="_blank">제휴</a> / <a href="http://company.hankyung.com/introduce/partnership/contents/" target="_blank">콘텐츠구입</a></span>
+							<span><a href="https://plus.hankyung.com/klay.question" target="_blank" style="color:#ee4c4c; font-weight:bold">암호화폐(<span class="txt-en">KLAY</span>) 문의</a></span>
+							<a href="http://company.hankyung.com/etc/hkdc/ad/" target="_blank">광고안내</a>
+							<a href="//www.hankyung.com/support" target="_blank">이메일 문의</a>
+							<a href="https://www.hankyung.com/sitemap.html" target="_blank">사이트맵</a>
+						</div>
+						<div class="f-item">
+							<a href="https://id.hankyung.com/user/selectAuthAgree.do" target="_blank">이용약관</a>
+							<a href="https://id.hankyung.com/user/selectPrivacy.do" target="_blank"><strong>개인정보처리방침</strong></a>
+							<a href="https://id.hankyung.com/user/selectYouthProtection.do" target="_blank">청소년보호정책(책임자 : 이지연)</a>
+							<span>대표번호 : <span class="txt-num">02-3277-9900</span></span>
+						</div>
+						<div class="f-item">
+							<address>서울시 중구 청파로 <span class="txt-num">463</span> 한국경제신문사</address>
+						</div>
+						<div class="f-item">
+							<span>사업자번호 : <span class="txt-num">104-81-47984</span></span>
+							<span>통신판매번호 : 중구<span class="txt-num">00606</span></span>
+							<span>인터넷신문등록번호 : 서울 아<span class="txt-num">01035</span></span>
+							<span>등록(발행)일자 : <span class="txt-num">2009.11.23</span></span>
+							<span>발행·편집인 : 하영춘</span>
+						</div>
+					</dd>
+				</dl>
+			</div>
+			<div class="f-item-group">
+				<p class="copyright">Copyright by 한경닷컴 co., Ltd. All rights reserved.</p>
+				<dl class="hk-family">
+					<dt>한국경제<span class="txt-en">Family</span></dt>
+					<dd>
+						<div class="f-item">
+							<a href="http://www.wowtv.co.kr/" target="_blank">한국경제<span class="txt-en">TV</span></a> 
+							<a href="https://magazine.hankyung.com/" target="_blank">한국경제매거진</a>
+							<a href="http://bp.hankyung.com/" target="_blank"><span class="txt-en">Book</span></a>
+							<!-- <a href="http://ac.hankyung.com/" target="_blank">한경아카데미</a> --> <!-- [2022.05.25] 푸터 패밀리사이트 한경아카데미 제거 -->
+							<a href="https://tenasia.hankyung.com/" target="_blank">텐아시아</a>
+							<a href="https://www.kedglobal.com/" target="_blank"><span class="txt-en">KED Global</span></a> <!-- [2022.05.25] 푸터 패밀리사이트 KED Global 추가 -->
+						</div>
+					</dd>
+				</dl>
+			</div>
+		</div> 
     </div>
-  </footer>
+</footer>
